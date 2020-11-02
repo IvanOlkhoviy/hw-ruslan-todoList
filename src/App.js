@@ -17,19 +17,17 @@ function App() {
     setInputValue(value);
   };
 
-  const todoDelete = (id) =>{
-    setTodo(todos.filter((todo) => todo !== id))
+  const todoDelete = (title) =>{
+    setTodo(todos.filter((todo) => todo !== title))
   }
   
   return (
     <div className="App">
       <h2 className="text-center">TodoList</h2>
       <TodoInputComponent addTodo = {addTodo} changeInputValue = {changeInputValue} inputValue = {inputValue} />
-      {
-      todos.map((todo) => (
-            <TodoListComponent key = {todo} id = {todo} todoTitle = {todo} todoDelete = {todoDelete} />
-      ))
-      }
+      
+      <TodoListComponent todos = {todos} todoDel = {todoDelete}/>
+      
     </div>
   );
 }

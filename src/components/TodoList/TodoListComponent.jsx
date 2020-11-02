@@ -1,15 +1,15 @@
 import React from 'react';
+import { Todoitem } from '../TodoItem/TodoItem';
 import "./ListStyle.css"
 
-function TodoListComponent({id, todoTitle, todoDelete}) {
-    
+function TodoListComponent ({todos, todoDel}){
     return(
-        <div className = "row justify-content-center no-gutters mb-3 ">
-            <p className = "col-5 text-left item">{todoTitle}</p>
-            <button id = {id} className = "btn btn-danger"
-             onClick = { (e) => todoDelete(e.target.id) }>
-                &#x2718;
-            </button>
+        <div className="todosContainer">
+            {
+                todos.map(todo => 
+                    <Todoitem title = {todo} key={todo} todoDelete = {todoDel}/>
+                )
+            }
         </div>
     )
 }
